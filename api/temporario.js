@@ -22,7 +22,7 @@ function criaBancos(path) {
 // Module
 module.exports = ( () => {
     return {
-        get: ( response ) => {
+        get: ( request, response ) => {
             criaBancos(banco_diretorio)
             criaBancos(banco_temporario_diretorio)
           
