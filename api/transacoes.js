@@ -52,10 +52,8 @@ module.exports = ( () => {
         },
 
         patch: ( request, response ) => { 
-            const rawdata = fs.readFileSync(`${transacoesDiretorio}transacao_${request.params.id}.json`)
-            const transacao = JSON.parse(rawdata)
-
-            console.log(request.body)
+            fs.writeFileSync(`${transacoesDiretorio}transacao_${request.params.id}.json`, `${request.body.transaction}`)
+            
             response.send(true)
         }
     }

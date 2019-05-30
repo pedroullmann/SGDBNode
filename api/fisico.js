@@ -1,5 +1,6 @@
 // Requires
 const fs = require('fs')
+const banco_diretorio = './banco_fisico/banco_fisico.json'
 
 // Module
 module.exports = ( () => {
