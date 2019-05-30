@@ -49,6 +49,14 @@ module.exports = ( () => {
             fs.writeFileSync(`${transacoesDiretorio}transacao_${proximoId}.json`, data)
 
             response.send(transacao)
+        },
+
+        patch: ( request, response ) => { 
+            const rawdata = fs.readFileSync(`${transacoesDiretorio}transacao_${request.params.id}.json`)
+            const transacao = JSON.parse(rawdata)
+
+            console.log(request.body)
+            response.send(true)
         }
     }
 })()

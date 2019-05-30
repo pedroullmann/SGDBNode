@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.get('/transacoes', transacoes.get)
 app.get('/transacoes/:id', transacoes.getOne)
 app.post('/transacoes', transacoes.post)
+app.patch('/transacoes/:id', transacoes.patch)
 
 // API Banco físico
 app.get('/bancofisico', fisico.get)
