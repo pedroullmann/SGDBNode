@@ -37,12 +37,15 @@ module.exports = ( () => {
           
             const banco_temporario_file = fs.readFileSync(banco_temporario_diretorio)
             const visao = JSON.parse(banco_temporario_file)
+
+            const newDate = new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '')
           
             const transacao = {  
               id: proximoId,
-              nome: `Transacao ${proximoId}`,
+              nome: `Transação ${proximoId}`,
               visao: visao,
-              transacao_estado: 0
+              transacao_estado: 0,
+              data: newDate
             }
           
             const data = JSON.stringify(transacao)
