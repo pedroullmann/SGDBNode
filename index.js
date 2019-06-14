@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const transacoes = require('./api/transacoes')
 const fisico = require('./api/fisico')
 const temporario = require('./api/temporario')
+const lista = require('./api/lista')
 
 // Properties
 const app = express()
@@ -22,6 +23,10 @@ app.get('/bancofisico', fisico.get)
 
 // API Banco temporário
 app.get('/bancotemporario', temporario.get)
+
+// API Lista
+app.post('/lista', lista.post)
+app.get('/lista', lista.get)
 
 //Limpar todos arquivos
 // app.get('/limpar', (req, res) => {
