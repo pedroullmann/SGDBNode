@@ -5,6 +5,7 @@ const transacoes = require('./api/transacoes')
 const fisico = require('./api/fisico')
 const temporario = require('./api/temporario')
 const lista = require('./api/lista')
+const deadlock = require('./api/deadlock')
 
 // Properties
 const app = express()
@@ -28,10 +29,10 @@ app.get('/bancotemporario', temporario.get)
 app.post('/lista', lista.post)
 app.get('/lista', lista.get)
 
-//Limpar todos arquivos
-// app.get('/limpar', (req, res) => {
-
-// })
+// API Deadlock
+app.get('/deadlock/verify', deadlock.verifyDeadlock)
+app.get('/deadlock', deadlock.get)
+app.post('/deadlock', deadlock.post)
 
 //Recebe banco_temporario e salva no banco_fisico
 // app.post('/checkpoint', (req, res) => {
