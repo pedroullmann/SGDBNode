@@ -58,6 +58,35 @@ module.exports = ( () => {
             fs.writeFileSync(`${transacoesDiretorio}transacao_${request.params.id}.json`, `${request.body.transaction}`)
             
             response.send(true)
+        },
+
+        rollback: ( request, response ) => { 
+            const transacaoPath = `${transacoesDiretorio}transacao_${request.params.id}.json`
+            const rawdata = fs.readFileSync(transacaoPath)
+            const transacao = JSON.parse(rawdata)
+
+            transacao.transacao_estado = 2
+
+            const data = JSON.stringify(transacao)
+            fs.writeFileSync(transacaoPath, data)
+
+            // Verifica se alguma transacao está sendo bloqueada por esta
+            const arquivos = fs.readdirSync(transacoesDiretorio)
+            const arquivosFiltrados = arquivos.filter(junk.not)
+
+            arquivosFiltrados.forEach(element => {
+                const elementContent = fs.readFileSync(transacoesDiretorio + element, 'utf8')
+                const json = JSON.parse(elementContent)
+            
+                if (`${json.blockedBy}` === `${request.params.id}`) { 
+                    json.blockedBy = 0
+
+                    const data = JSON.stringify(json)
+                    fs.writeFileSync(transacoesDiretorio + element, data)
+                }
+            })
+
+            response.send(transacao)
         }
     }
 })()

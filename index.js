@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.get('/transacoes', transacoes.get)
 app.get('/transacoes/:id', transacoes.getOne)
 app.post('/transacoes', transacoes.post)
+app.post('/transacoes/:id', transacoes.rollback)
 app.patch('/transacoes/:id', transacoes.patch)
 
 // API Banco físico
@@ -28,6 +29,7 @@ app.get('/bancotemporario', temporario.get)
 // API Lista
 app.post('/lista', lista.post)
 app.get('/lista', lista.get)
+app.post('/lista/:bloqueada/:liberada', lista.deleteBlock)
 
 // API Deadlock
 app.get('/deadlock/verify', deadlock.verifyDeadlock)
