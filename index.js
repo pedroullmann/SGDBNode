@@ -6,6 +6,7 @@ const fisico = require('./api/fisico')
 const temporario = require('./api/temporario')
 const lista = require('./api/lista')
 const deadlock = require('./api/deadlock')
+const logs = require('./api/logs')
 
 // Properties
 const app = express()
@@ -36,22 +37,9 @@ app.get('/deadlock/verify', deadlock.verifyDeadlock)
 app.get('/deadlock', deadlock.get)
 app.post('/deadlock', deadlock.post)
 
-//Recebe banco_temporario e salva no banco_fisico
-// app.post('/checkpoint', (req, res) => {
-//   const banco_temporario = req.body
-// })
-
-//Pega os logs
-// app.get('/logs', (req, res) => {
-//   const rawdata = fs.readFileSync(`${transacoesDiretorio}transacao_${req.params.id}.json`);  
-//   const transacao = JSON.parse(rawdata);
-//   res.send(transacao)
-// })
-
-//Registra logs
-// app.post('/logs', (req, res) => {
-//   const log = req.body
-// })
+// API Logs
+app.get('/logs', logs.get)
+app.post('/logs', logs.post)
 
 // Listener
 app.listen(port)
