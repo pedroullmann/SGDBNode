@@ -7,6 +7,7 @@ const temporario = require('./api/temporario')
 const lista = require('./api/lista')
 const deadlock = require('./api/deadlock')
 const logs = require('./api/logs')
+const commit = require('./api/commit')
 
 // Properties
 const app = express()
@@ -40,6 +41,11 @@ app.post('/deadlock', deadlock.post)
 // API Logs
 app.get('/logs', logs.get)
 app.post('/logs', logs.post)
+
+// API Commit
+app.post('/commit/:id', )
+
+// API Checkpoint
 
 // Listener
 app.listen(port)
