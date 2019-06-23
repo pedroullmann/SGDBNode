@@ -27,6 +27,8 @@ module.exports = ( () => {
 
             transactionJson.transacao_estado = 1
 
+            removedIds.sort(function(a, b){return b-a})
+
             if ( removedIds.length > 0 ) {
                 removedIds.forEach(element => {
                     temporaryJson.splice(element - 1,1)
