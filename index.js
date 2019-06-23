@@ -43,7 +43,7 @@ app.get('/logs', logs.get)
 app.post('/logs', logs.post)
 
 // API Commit
-app.post('/commit/:id', )
+app.post('/commit/:id', commit.post)
 
 // API Checkpoint
 
