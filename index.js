@@ -8,6 +8,7 @@ const lista = require('./api/lista')
 const deadlock = require('./api/deadlock')
 const logs = require('./api/logs')
 const commit = require('./api/commit')
+const limpar = require('./api/limpar')
 
 // Properties
 const app = express()
@@ -46,6 +47,9 @@ app.post('/logs', logs.post)
 app.post('/commit/:id', commit.post)
 
 // API Checkpoint
+
+// API Limpar files
+app.get('/limpar', limpar.get)
 
 // Listener
 app.listen(port)
