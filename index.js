@@ -9,6 +9,7 @@ const deadlock = require('./api/deadlock')
 const logs = require('./api/logs')
 const commit = require('./api/commit')
 const limpar = require('./api/limpar')
+const checkpoint = require('./api/checkpoint')
 
 // Properties
 const app = express()
@@ -47,6 +48,7 @@ app.post('/logs', logs.post)
 app.post('/commit/:id', commit.post)
 
 // API Checkpoint
+app.post('/checkpoint', checkpoint.post)
 
 // API Limpar files
 app.get('/limpar', limpar.get)
