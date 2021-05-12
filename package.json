@@ -8,7 +8,7 @@
     "express": "^4.17.0",
     "extendify": "^1.0.0",
     "junk": "^3.1.0",
-    "merge": "^1.2.1",
+    "merge": "^2.1.1",
     "mkdirp": "^0.5.1"
   },
   "devDependencies": {},
